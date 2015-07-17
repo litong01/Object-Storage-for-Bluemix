@@ -8,11 +8,11 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['sparksOS'],
+  app_name: ['XXXXXXX'],
   /**
    * Your New Relic license key.
    */
-  license_key: '54386633295703d6234068a62efb8852269b213e',
+  license_key: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXX',
   logging: {
     /**
      * Level at which to log. 'trace' is most useful to New Relic when diagnosing
