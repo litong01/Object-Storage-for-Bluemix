@@ -1,8 +1,8 @@
 {
     "name" : "SwiftOnSoftLayer",
     "broker_url" : "http://swift.stage1.ng.bluemix.net",
-    "auth_username": "swift",
-    "auth_password":"secret",
+    "auth_username": "xxxxx",
+    "auth_password":"xxxxx",
     "visibilities" : [
         {"organization_name" : "litong01@us.ibm.com"},
         {"organization_name" : "lmsurpre@us.ibm.com"},
