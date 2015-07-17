@@ -1,0 +1,15 @@
+{"id": "46e9cb19-e53d-46cc-b828-17d4195f70c7",
+ "broker_name": "SwiftOnSoftLayer", 
+ "resources": [
+    {"name" : "Storage",
+     "units": [{"name": "GIGABYTE",
+                "quantityType": "CURRENT" }]}
+ ], 
+ "aggregations": [
+    {"name": "GB_PER_MONTH",
+     "unit": "GIGABYTE",
+     "aggregationGroup": {"name": "monthly" },
+     "formula": "AVG({GIGABYTE})"
+    }
+ ]
+}

@@ -1,0 +1,147 @@
+extends layout
+
+block empty_account
+  div(class="tileHeader") The service does not have any accounts!
+
+block error_block  
+  div(class="tileHeader") #{body.msg}
+    = body.msg
+block instance_row
+  tr
+    td #{instance.id}
+    td #{instance.app}
+    td #{instance.user}
+    td #{instance.account}
+    td #{instance.accountId}
+    td #{instance.orderItem}
+    td #{instance.billingItem}
+    td
+      button(class="mainButton rowButton deleteAccountButton _account#{instance.account} billingItem#{instance.billingItem}" id="#{instance.account_key}") Delete 
+
+block global_instance_row
+  tr
+    td #{instance.id}
+    td #{instance.account}
+    td #{instance.accountId}
+    td #{instance.orderItem}
+    td #{instance.billingItem}
+
+block buffer_account
+  tr
+    td #{instance.account}
+    td #{instance.accountId}
+    td #{instance.orderItem}
+    td #{instance.billingItem}
+
+block pending_order_row
+  tr
+    td #{order.id}
+    td #{order.app}
+    td #{order.user}
+    td #{order.orderItem}
+    
+block instances_block
+  if instances.length > 0
+    div(class="tileHeader") #{instance_title}
+    div(class="tileContent appTable")
+      table(class="tablesorter")
+        thead
+          tr
+            th Instance
+            th Application
+            th User
+            th Account Name
+            th Account Id
+            th Order
+            th Billing Item
+            th Action
+        tbody
+          each instance in instances
+            block instance_row              
+  else
+    block empty_account
+block service_row
+  tr
+    td #{service.org}
+    td #{service.space} 
+    td #{service.id}
+    td #{service.plan}
+    td #{service.status}
+     
+block content
+  div(class="mainContainer")
+    div(class="section group panelMainContainer")
+      div(style="width:100%;" class="col mainContainer")
+        - var instances = body.instances
+        - var instance_title = "Accounts"
+        div(class="infoTile Accounts")
+          block instances_block
+        if(body.global_accounts.length > 0)
+          div(class="infoTile")
+            div(class="tileHeader") Global instance-wide shared accounts
+              div(class="tileContent appTable")
+                table(class="tablesorter")
+                  thead
+                    tr
+                      th Instance
+                      th Account Name
+                      th Account Id
+                      th Order
+                      th Billing Item
+                  tbody
+                    each instance in body.global_accounts
+                      block global_instance_row              
+        - var instances = body.orphaned_accounts
+        if(instances.length > 0)
+          - var instance_title = "Orphaned Accounts (No record of such instance/app binding exists)"
+          div(class="infoTile orphanedAccounts")
+            block instances_block
+        - var orders_pending = body.orders_pending
+        if(orders_pending.length > 0)
+          div(class="infoTile")
+            div(class="tileHeader") Pending Orders (Order id found in Redis OAB key, but no account is stored yet)
+            div(class="tileContent appTable")
+              table(class="tablesorter")
+                thead
+                  tr
+                    th Instance
+                    th Application
+                    th User
+                    th Order
+                tbody
+                  each order in orders_pending
+                    block pending_order_row          
+        div(class="infoTile")
+          if body.services.length > 0
+            div(class="tileHeader") Services
+            div(class="tileContent appTable")
+              table(class="tablesorter")
+                thead
+                  tr
+                    th Organization Guid
+                    th Space Guid
+                    th Instance
+                    th Plan Guid
+                    th Status (Enabled)
+                tbody
+                  each service in body.services
+                    block service_row              
+          else
+            block empty_account
+        div(class="infoTile")
+          if body.buffer_accounts.length > 0
+            div(class="tileHeader") Broker Buffer (standby) Softlayer accounts.
+            div(class="tileContent appTable")
+              table(class="tablesorter")
+                thead
+                  tr
+                    th Account Name
+                    th Account Id
+                    th Order
+                    th Billing Item
+                tbody
+                  each instance in body.buffer_accounts
+                    block buffer_account              
+          else
+            block empty_account
+        

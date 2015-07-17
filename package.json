@@ -1,0 +1,17 @@
+{
+  "name": "slswift",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.4.8",
+    "jade": "1.3.0",
+    "request": "2.34.0",
+    "async": "0.2.10",
+    "openid": "*",
+    "newrelic": "1.18.4",
+    "redis": "0.10.3"
+  }
+}

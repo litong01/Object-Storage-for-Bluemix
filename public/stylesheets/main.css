@@ -1,0 +1,310 @@
+/*  SECTIONS  ============================================================================= */
+.section {
+  clear: both;
+  padding: 0px;
+  margin: 0px; }
+
+/*  GROUPING  ============================================================================= */
+.group:before,
+.group:after {
+  content: "";
+  display: table; }
+
+.group:after {
+  clear: both; }
+
+.group {
+  zoom: 1;
+  /* For IE 6/7 (trigger hasLayout) */ }
+
+/*  GRID COLUMN SETUP   ==================================================================== */
+.col {
+  display: block;
+  float: left; }
+
+.col:first-child {
+  margin-left: 0; }
+
+/* all browsers except IE6 and lower */
+/*  REMOVE MARGINS AS ALL GO FULL WIDTH AT 480 PIXELS */
+@media only screen and (max-width: 480px) {
+  .col {
+    margin: 1% 0 1% 0%; } }
+.col.sidebar {
+  width: 23.8%; }
+
+.col.mainContainer {
+  width: 74.6%; }
+
+@media only screen and (max-width: 960px) {
+  .col.sidebar {
+    width: 32.26%; }
+
+  .col.mainContainer {
+    width: 66.13%; } }
+@media only screen and (max-width: 480px) {
+  .col.sidebar {
+    width: 100%; }
+
+  .col.mainContainer {
+    width: 100%; } }
+body {
+  background: #fafafa;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333; }
+
+.hero-unit {
+  margin: 50px auto 0 auto;
+  width: 300px;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  background-color: #eee;
+  border-radius: 6px;
+  padding: 60px; }
+  .hero-unit h1 {
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px; }
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0; }
+
+body {
+  background-color: #3a4b54 !important; }
+
+.bluemixdropdown {
+  color:inherit;
+}
+.hidden {
+  display:none;
+}
+.mainContainer .panelMainContainer .mainButton.rowButton {
+  margin: 0;
+}
+.mainContainer .panelMainContainer .Accounts .mainButton.rowButton {
+  display: none;
+}
+.mainContainer.objectStorageUI {
+    position: relative;	
+}
+.mainContainer .standby {
+    background-color: #eee;
+    height: 100%;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+.mainContainer .standbyspinner {
+    background-image: url("/img/spinner.gif");
+    background-repeat: no-repeat;
+    height: 20px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    z-index: 1001;
+}
+.mainContainer {
+  background-color: white; }
+  .mainContainer .panelHeader .tab {
+    margin: 0;
+    padding: 15px 0;
+    line-height: 20px;
+    font-size: 1em;
+    font-weight: 200;
+    color: #6f7076;
+    color: #6f7076;
+    text-align: center;
+    border-bottom: 2px solid;
+    border-color: #e3e4e6; }
+    .mainContainer .panelHeader .tab.active {
+      color: #00a6a0;
+      border-bottom: 2px solid #00a6a0; }
+  .mainContainer .panelMainContainer .infoTile .tileHeader {
+    font-size: 1em;
+    font-weight: 200;
+    color: #6f7076;
+    line-height: 2em; }
+  .mainContainer .panelMainContainer .infoTile .tileBody {
+    font-size: 0.85em;
+    font-weight: 200;
+    color: #231f20;
+    line-height: 1.7em; }
+    .mainContainer .panelMainContainer button.mainButton {
+      font-size: 1em;
+      font-weight: 200;
+      color: #6f7076;
+      color: white;
+      font-weight: bold;
+      display: block;
+      width: 100%;
+      height: 30px;
+      text-shadow: initial;
+      background-color: #00a6a0;
+      border: none;
+      margin: 15px 0; }
+  .mainContainer .panelMainContainer .sidebar {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 100%;
+    border-right: 2px solid #e3e4e6;
+    margin-top: 0; }
+    .mainContainer .panelMainContainer .sidebar .infoTile {
+      padding: 20px; }
+      .mainContainer .panelMainContainer .sidebar .infoTile .tileHeader {
+        font-size: 1em;
+        font-weight: 200;
+        color: #6f7076;
+        line-height: 2em; }
+      .mainContainer .panelMainContainer .sidebar .infoTile .tileBody {
+        font-size: 0.85em;
+        font-weight: 200;
+        color: #231f20;
+        line-height: 1.7em; }
+      .mainContainer .panelMainContainer .sidebar .infoTile:not(:last-child) {
+        border-bottom: 2px solid #e3e4e6; }
+      .mainContainer .panelMainContainer .sidebar .infoTile.sumInfo {
+        padding: 40px; }
+        .mainContainer .panelMainContainer .sidebar .infoTile.sumInfo .infoSec {
+          font-size: 0.875em;
+          font-weight: 400;
+          color: #4c4d53; }
+          .mainContainer .panelMainContainer .sidebar .infoTile.sumInfo .infoSec .secHeader {
+            display: block;
+            margin-bottom: 15px; }
+          .mainContainer .panelMainContainer .sidebar .infoTile.sumInfo .infoSec .secBody {
+            display: block;
+            margin-bottom: 35px; }
+            .mainContainer .panelMainContainer .sidebar .infoTile.sumInfo .infoSec .secBody .highlight {
+              font-size: 2em;
+              font-weight: 200;
+              color: #00648d;
+              display: block;
+              margin-bottom: 15px; }
+  .mainContainer .panelMainContainer .mainContainer {
+    box-sizing: border-box; }
+    .mainContainer .panelMainContainer .mainContainer .infoTile {
+      padding: 15px 25px; }
+      .mainContainer .panelMainContainer .mainContainer .infoTile .tileHeader {
+        display: inline; }
+      .mainContainer .panelMainContainer .mainContainer .infoTile .dropdownGroup .dropdown span{ 
+         color: #231f20;
+			    display: block;
+			    font-size: 12px;
+			    padding-bottom: 5px;
+      }
+      .mainContainer .panelMainContainer .mainContainer .infoTile .dropdownGroup {
+        display: inline;
+        float: right;
+        height: 60px;
+        margin-right: 10px; }
+      .mainContainer .panelMainContainer .mainContainer .infoTile .appTable, .mainContainer .panelMainContainer .mainContainer .infoTile .objTable {
+        }
+        .mainContainer .panelMainContainer .mainContainer .infoTile .appTable table, .mainContainer .panelMainContainer .mainContainer .infoTile .objTable table {
+          width: 100%;
+          padding: 10px; }
+          .mainContainer .panelMainContainer .mainContainer .infoTile .appTable table th, .mainContainer .panelMainContainer .mainContainer .infoTile .objTable table th {
+            text-align: left;
+            border-bottom: 3px solid #00b2ef;
+            padding: 10px 5px; }
+          .mainContainer .panelMainContainer .mainContainer .infoTile .appTable table tbody td, .mainContainer .panelMainContainer .mainContainer .infoTile .objTable table tbody td {
+            padding: 10px 5px;
+            vertical-align: middle; }
+          .mainContainer .panelMainContainer .mainContainer .infoTile table tbody tr {
+            font-size: 0.75em;
+            font-weight: 200;
+            color: #231f20; }
+          .mainContainer .panelMainContainer .mainContainer .infoTile table tbody tr:nth-child(even) {
+            background-color: #effbff; }
+    .mainContainer .panelMainContainer .mainContainer .chartContainer {
+      margin-top: 20px; }
+      .mainContainer .panelMainContainer .mainContainer .chartContainer line.c3-xgrid {
+        stroke: #b8babe;
+        opacity: 0.6 !important;
+        stroke-dasharray: none; }
+      .mainContainer .panelMainContainer .mainContainer .chartContainer line.c3-ygrid {
+        stroke: #b8babe;
+        opacity: 0.3 !important; }
+      .mainContainer .panelMainContainer .mainContainer .chartContainer .c3-axis.c3-axis-y g.tick text, .mainContainer .panelMainContainer .mainContainer .chartContainer .c3-axis.c3-axis-x g.tick text {
+        fill: #939499; }
+      .mainContainer .panelMainContainer .mainContainer .chartContainer .c3-axis.c3-axis-y g.tick line, .mainContainer .panelMainContainer .mainContainer .chartContainer .c3-axis.c3-axis-x g.tick line {
+        display: none; }
+      .mainContainer .panelMainContainer .mainContainer .chartContainer .c3-axis.c3-axis-y path.domain, .mainContainer .panelMainContainer .mainContainer .chartContainer .c3-axis.c3-axis-x path.domain {
+        stroke: none; }
+      .mainContainer .panelMainContainer .mainContainer .chartContainer .c3-chart .c3-chart-lines .c3-chart-line .c3-lines .c3-line {
+        stroke-width: 3px; }
+    @media only screen and (max-width: 480px) {
+      .mainContainer .panelMainContainer .mainContainer .infoTile {
+        padding-bottom: 25px;
+        border-bottom: 2px solid #e3e4e6;
+        border-left: 2px solid #e3e4e6; } }
+  .mainContainer .dropdown {
+    display: inline;
+    float: left;
+    margin-left: 10px; }
+    .mainContainer .dropdown .dropcontainer {
+      position: absolute;
+      background: white;
+      z-index: 200;
+      font-size: 16px;
+      color: #777; }
+    .mainContainer .dropdown .trigger, .mainContainer .dropdown .activetrigger {
+      font-size: 0.85em;
+      font-weight: 200;
+      color: #231f20;
+      text-decoration: none;
+      padding: 10px;
+      width: 150px;
+	    background-color: white;
+	    background-image: url("../images/dropdown-arrow-down.png");
+	    background-position: 94% center;
+	    background-repeat: no-repeat;
+	    background-size: 12px 6px;
+      display: block;
+      border: 1px solid #ccc;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box; }
+    .mainContainer .dropdown .activetrigger {
+      background-image: url("../images/dropdown-arrow-up.png");
+       }
+    .mainContainer .dropdown .dropcontainer ul {
+      font-size: 0.85em;
+      font-weight: 200;
+      color: #231f20;
+      border: 1px solid #ccc;
+      border-top: none;
+      background: #fff;
+      list-style-type: none;
+      margin: 0;
+      padding-left:0;
+      width: 150px;
+      z-index: 100;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box; }
+      .mainContainer .dropdown .dropcontainer ul li {
+        padding: 10px 10px 10px 15px; 
+        background-color: rgba(227, 228, 229, 0.9);
+        color: #231f20;
+        }
+        .mainContainer .dropdown .dropcontainer ul li a {
+          text-decoration: none; }
+        .mainContainer .dropdown .dropcontainer ul li:hover {
+          color: white;        
+          background-color: #00A6A0;
+          outline: none; }
+    .mainContainer .dropdown .dropcontainer ul li:last-child {
+      border-bottom: none; }
+    .mainContainer .dropdown .dropdownhidden {
+      display: none; }
+    .mainContainer .dropdown .dropdownvisible {
+      height: auto; }

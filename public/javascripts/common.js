@@ -1,0 +1,1 @@
+var mysession = '100 apps';

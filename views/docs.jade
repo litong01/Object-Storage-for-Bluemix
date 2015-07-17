@@ -1,0 +1,114 @@
+extends doclayout
+
+block content
+  h1 Getting Started with SoftLayer Swift Service
+
+  p This community service is as-is and is provided for development and experimentation purposes only
+
+  h2 Service plans
+
+  p The following table provides a description of the service plans available for the service.
+
+  table(border="1")
+    tr
+      th Plan
+      th Price
+      th Max number of users
+      th Backup policy
+      th API
+      th SLA
+      th Description
+    tr
+      td basic
+      td Free
+      td 20 users/instance
+      td Enabled
+      td OpenStack Swift API 1.0
+      td N/A
+      td Cloud object storage services
+    tr
+      td standard
+      td Free
+      td 50 users/instance
+      td Enabled
+      td OpenStack Swift API 1.0
+      td N/A
+      td Cloud object storage services
+    tr
+      td turbo
+      td Free
+      td 100 users/instance
+      td Enabled
+      td OpenStack Swift API 1.0
+      td N/A
+      td Cloud object storage services
+
+
+
+  h2 Usage:
+  p Refer to the following information if you want to use this service within your application:
+
+  p
+    ol
+      li Managing SoftLayer Swift service instance with CLI
+        p Firstly, you need to create a new service instance with the <code>cf create-service</code> command. Type the following command at terminal:
+
+        pre $ cf create-service SwiftOnSoftLayer basic instance_basic
+
+        p After creating a new service, you can use the <code>cf services</code> command to list all available service instances that you have created.
+
+        pre $ cf services
+
+        p Before using a service in application, you must bind the service to your application. Use the <code>cf bind-service</code> command:
+
+        pre $ cf bind-service &lt;AppName&gt; instance_basic
+
+        p You need to provide one of the applications and the service instance name for service binding. When the binding action succeed, cf returns a message to you.
+
+      li Use the service in your application:
+
+        p After binding a SoftLayer Swift service instance to the application, the following configuration is added to your VCAP_SERVICES environment variable.
+
+        pre {
+          |    "SwiftOnSoftLayer": [
+          |      {"name": "instance_basic",
+          |       "label": "SwiftOnSoftLayer",
+          |       "plan": "basic",
+          |       "credentials": {
+          |          "auth_uri": "http://&lt;host&gt;:&lt;port&gt;/auth/&lt;instance-id&gt;/&lt;binding-id&gt;",
+          |          "username": "&lt;username&gt;",
+          |          "password": "&lt;password&gt;"
+          |       }
+          |      }
+          |    ]
+          |  }
+
+        p The information in the credentials section is important to your app. For each user of your app, you will need to pad the userid to the auth_uri to make
+          | a new url to get an access token from SoftLayer Swift. For example, you have a user whose userid is user1, then the url to get access token from
+          | swift should look like this:
+          
+          pre http://&lt;host&gt;:&lt;port&gt;/auth/&lt;instance-id&gt;/&lt;binding-id&gt;/user1
+          
+        p Use the above url, username and password in the credentials section to send a GET requests by following Basic Authentication standard to obtain an
+          | access token. If this is the very first time for a particular user, it will take awhile for Softlayer to provisioning an account for that user.
+          | Before Softlayer provising process is finished, this service will not be able to proceed. Applications using this service will have to show messages
+          | to the users to wait for the provisioning to be completed. Normally it should take only couple of minutes. During this period, the user should not be
+          | allowed to perform operations such as upload, download, etc.
+          
+        p If the above request is successful, then the response header should contain the access token and the storage url for later on operations.
+        
+        p The two headers are: X-Auth-Token and X-Storage-Url
+        
+        p With the access token and the storage url, an application can manipulate a user's storage space by utilize OpenStack Swift 1.x API. For example,
+        
+        p An application can send the following request to list a user's all containers:
+        
+        pre 
+          | GET http://sample.com/v1/auth_test HTTP/1.1
+          | X-Auth-Token: AUTH_tk93c64b7fa2c0486d8e29c7504096ccbb
+ 
+      li When access token for a user expires:
+        p 
+          | After certain period of time, an access token for a user will expire for security reasons, when that happens, the application is responsible to request
+          | a new access token by using the exactly same method.
+        

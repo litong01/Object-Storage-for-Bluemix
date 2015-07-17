@@ -1,0 +1,17 @@
+{
+    "name" : "objectstorage",
+    "broker_url" : "http://swift.ng.bluemix.net",
+    "auth_username": "swift",
+    "auth_password":"secret",
+    "visibilities" : [
+        {"organization_name" : "litong01@us.ibm.com"},
+        {"organization_name" : "lmsurpre@us.ibm.com"},
+        {"organization_name" : "karas_aj@outlook.com"},
+        {"organization_name" : "jasonkillian35@gmail.com"},
+        {"organization_name" : "chuempel@de.ibm.com"},
+        {"organization_name" : "jstart@us.ibm.com"},
+        {"organization_name" : "amodb@us.ibm.com"},
+        {"organization_name" : "IBMBSS"}
+    ]
+}
+

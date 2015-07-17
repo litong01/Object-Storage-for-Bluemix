@@ -1,0 +1,92 @@
+extends layout
+
+block empty_account
+  div(class="tileHeader") The service does not have any accounts!
+
+block error_block  
+  div(class="tileHeader") #{body.msg}
+    = body.msg
+block user_row
+  tr
+    td #{account.account_id}
+    td #{account.containers}
+    td #{account.objects}
+    td #{account.gbUsed} GB
+
+block app_row
+  tr
+    td #{app.name}
+    td $0.00
+    td #{app.usage} GB
+    td #{app.users}
+block content
+  div(class="mainContainer objectStorageUI")
+    div(class="section group panelMainContainer")
+      div(class="col sidebar")
+        div(class="sumInfo infoTile")
+          div(class="usage infoSec")
+            span(class="secHeader") Total Usage 
+            span(class="secBody")
+              span(class="highlight") #{body.gbUsed} GB
+          div(class="monthlyCost infoSec")
+            span(class="secHeader") Total Monthly Cost                            
+            span(class="secBody")
+              span(class="highlight") $0.00
+          div(class="users infoSec")
+            div(class="secHeader") Total Users
+            span(class="secBody")              
+              if body.accounts
+                span(class="highlight") #{body.accounts.length}
+              else
+                span(class="highlight") 0  
+          if body.globalUserUsage
+            div(class="monthlyCost infoSec")
+              span(class="secHeader") Shared Instance Usage                            
+              span(class="secBody")
+                span(class="highlight") #{body.globalUserUsage} GB           
+        div(class="deeperInsights infoTile")                    
+          div(class="tileBody timestamp") 
+            span Data Collected: 
+            span(class="timestampValue #{body.timestamp}") #{body.timestamp}
+            button(class="mainButton refreshButton") Refresh
+      div(class="col mainContainer")
+        div(class="infoTile")
+          if body.apps
+            - var apps_size = body.appSize
+            if apps_size > 0
+              div(class="tileHeader") Applications
+              div(class="tileContent appTable")
+                table(class="tablesorter")
+                  thead
+                    tr
+                      th Application
+                      th Monthly cost
+                      th Usage
+                      th Number of Users
+                  tbody
+                    each app in body.apps
+                      block app_row              
+            else
+              block empty_account
+          else
+            error_block        
+        div(class="infoTile")
+          if body.accounts
+            - var account_size = body.accounts.length
+            if account_size > 0
+              div(class="tileHeader") Accounts
+              div(class="tileContent appTable")
+                table(class="tablesorter")
+                  thead
+                    tr
+                      th User
+                      th Containers
+                      th Objects
+                      th Usage
+                  tbody
+                    each account in body.accounts
+                      block user_row
+    div(class="standby standbyComponent hidden")
+    div(class="standbyspinner standbyComponent hidden") 
+          
+
